@@ -6,7 +6,7 @@
  * (예: bg-plum-800, text-berry 처럼 사용)
  */
 @theme {
-  --font-sans: var(--font-noto), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-sans: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 
   --color-plum-950: #2a0f30; /* 가장 진한 보라 - 푸터 하단 */
   --color-plum-900: #3a1740; /* 진한 보라 - 시설 / 진료시간 배경 */

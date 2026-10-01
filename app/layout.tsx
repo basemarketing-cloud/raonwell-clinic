@@ -1,17 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Noto_Sans_KR } from "next/font/google";
 import "@/styles/globals.css";
 
-const noto = Noto_Sans_KR({
-  weight: ["400", "500", "700"],
-  preload: false,
-  display: "swap",
-  variable: "--font-noto",
-});
+// 폰트: Noto Sans KR (Google Fonts에서 불러옴)
+const FONT_URL = "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap";
 
 // 배포 주소 (Vercel에 배포하면 자동으로 설정됩니다)
+const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL ?? process.env.VERCEL_URL;
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
-  ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+  ?? (vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000");
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -35,7 +31,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={noto.variable}>
+    <html lang="ko">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="stylesheet" href={FONT_URL} />
+      </head>
       <body>{children}</body>
     </html>
   );
