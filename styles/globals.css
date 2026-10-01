@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/*
+ * 색상 · 폰트 설정
+ * 여기 값을 바꾸면 사이트 전체 색이 함께 바뀝니다.
+ * (예: bg-plum-800, text-berry 처럼 사용)
+ */
+@theme {
+  --font-sans: var(--font-noto), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+
+  --color-plum-950: #2a0f30; /* 가장 진한 보라 - 푸터 하단 */
+  --color-plum-900: #3a1740; /* 진한 보라 - 시설 / 진료시간 배경 */
+  --color-plum-800: #4b2154; /* 메인 브랜드 색 - 메뉴바, 제목, 버튼 */
+  --color-plum-700: #5f3168;
+  --color-plum-500: #8b5f92; /* 원형 아이콘 배경 */
+  --color-plum-300: #c3a8c7;
+  --color-plum-100: #f1e9f2; /* 연한 보라 배경 */
+  --color-plum-50: #faf6fa;
+  --color-berry: #a3245e; /* 강조 색 - '상담문의', 포인트 */
+  --color-ink: #1f1a21; /* 기본 글자색 */
+  --color-mute: #6b6470; /* 보조 글자색 */
+  --color-line: #e7e2e8; /* 구분선 */
+  --color-paper: #f5f4f6; /* 회색 섹션 배경 */
+}
+
+html {
+  scroll-behavior: smooth;
+  /* 고정 헤더에 섹션 제목이 가려지지 않도록 */
+  scroll-padding-top: 76px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 124px;
+  }
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 첫 화면 문구가 차례로 떠오르는 효과 */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 스크롤 시 서서히 나타나는 효과 */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
